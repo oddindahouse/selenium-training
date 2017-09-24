@@ -3,7 +3,9 @@ package ru.stqa.training.selenium;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.HasCapabilities;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,12 +14,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
-
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 public class tmpExampler {
 
-
+    private WebDriverWait wait;
 
 
     @Test
@@ -59,6 +62,17 @@ public class tmpExampler {
 
         WebDriver driver = new FirefoxDriver(options);
         System.out.println( ((HasCapabilities)driver).getCapabilities() );
+        driver.quit();
+    }
+
+    @Test
+    public void testIE(){
+
+        WebDriver driver = new InternetExplorerDriver();
+        wait = new WebDriverWait(driver, 10);
+        driver.navigate().to("http://google.com");
+        driver.findElement(By.name("q")).sendKeys("webdriver", Keys.ENTER);
+        wait.until(titleIs("webdriver - Поиск в Google"));
         driver.quit();
     }
 
