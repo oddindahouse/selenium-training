@@ -8,8 +8,11 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
+test{
+    maxParallelForks = 10
+}
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'org.seleniumhq.selenium:selenium-java:3.5.3'
+    //compile 'ru.stqa.selenium:webdriver-factory:4.2'
 }
