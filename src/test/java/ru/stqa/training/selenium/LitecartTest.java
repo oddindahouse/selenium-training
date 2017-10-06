@@ -9,8 +9,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 
 public class LitecartTest extends TestBase {
 
-
-    private void loginF(){
+    @Before
+    public void loginTest(){
         driver.navigate().to("http://localhost/litecart/admin");
         driver.findElement(By.cssSelector("input[name=username]")).sendKeys("admin");
         driver.findElement(By.cssSelector("input[name=password]")).sendKeys("admin");
@@ -20,7 +20,7 @@ public class LitecartTest extends TestBase {
 
     @Test
     public void menuTest(){
-        loginF();
+
         String selector;
         String subSelector;
         int listSize = driver.findElements(By.cssSelector("ul#box-apps-menu li#app-")).size();
