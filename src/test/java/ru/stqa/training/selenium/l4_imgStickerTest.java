@@ -14,10 +14,10 @@ public class l4_imgStickerTest extends TestBase{
         List<WebElement> liList = driver.findElements(By.cssSelector("li.product"));
         for (WebElement li : liList) {
 
-            if ( li.findElements(By.cssSelector("div.sticker")).size() == 0){
+            if ( li.findElements(By.cssSelector("div.sticker")).size() != 1){
                 throw new NoSuchElementException();
             }
-           
+
         }
 
     }
