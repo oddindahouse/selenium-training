@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.xml.sax.Locator;
+
+import java.util.concurrent.TimeUnit;
 
 public class TestBase {
 
@@ -22,10 +25,11 @@ public class TestBase {
             return;
         }
 
-        driver = new InternetExplorerDriver();
+        driver = new ChromeDriver();
         tlDriver.set(driver);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
-
+        System.out.println(  ((HasCapabilities)driver).getCapabilities()  );
         Runtime.getRuntime().addShutdownHook(
                 new Thread(() -> { driver.quit(); driver = null; }));
     }
@@ -35,4 +39,6 @@ public class TestBase {
         //driver.quit();
         //driver = null;
     }
+
+
 }
