@@ -25,7 +25,6 @@ public class L5_Country_Zone extends TestBase {
 
     @Test
     public void countryTest()  {
-        //loginF();
         driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
         List<WebElement> trList = driver.findElements(By.cssSelector("tr.row"));
 
@@ -53,7 +52,6 @@ public class L5_Country_Zone extends TestBase {
 
     @Test
     public void geoTest(){
-        //loginF();
         driver.navigate().to("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
         List<WebElement> tdLinksList = driver.findElements(By.cssSelector("tr.row td:nth-child(3) a"));
 
