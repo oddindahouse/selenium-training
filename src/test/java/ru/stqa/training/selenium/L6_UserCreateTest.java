@@ -12,7 +12,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 public class L6_UserCreateTest extends TestBase {
 
     @Test
-    public void addUserTest() throws InterruptedException {
+    public void addUserTest() {
         //register
         String email = randomName(6)+"@"+randomName(4)+".com";
         driver.navigate().to("http://localhost/litecart/create_account");
@@ -51,18 +51,5 @@ public class L6_UserCreateTest extends TestBase {
         driver.navigate().to("http://localhost/litecart/logout");
     }
 
-    private String randomName(int minLength){
-        StringBuilder sb = new StringBuilder();
-        Random rand = new Random();
-        int length = rand.nextInt(6) + minLength;
-        for (int i = 0; i < length; i++) {
-            if ( (sb.length()> 0) && (rand.nextInt(10)%2 == 0 ) ){
-                sb.append(rand.nextInt(10));
-            } else {
-                sb.append((char) (rand.nextInt(22) + 97));
-            }
-        }
-        return sb.toString();
-    }
 
 }

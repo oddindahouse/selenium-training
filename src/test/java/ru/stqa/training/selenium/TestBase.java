@@ -9,6 +9,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.xml.sax.Locator;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -27,7 +28,7 @@ public class TestBase {
 
         driver = new ChromeDriver();
         tlDriver.set(driver);
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
         System.out.println(  ((HasCapabilities)driver).getCapabilities()  );
         Runtime.getRuntime().addShutdownHook(
@@ -38,6 +39,20 @@ public class TestBase {
     public void stop() {
         //driver.quit();
         //driver = null;
+    }
+
+    public String randomName(int minLength){
+        StringBuilder sb = new StringBuilder();
+        Random rand = new Random();
+        int length = rand.nextInt(6) + minLength;
+        for (int i = 0; i < length; i++) {
+            if ( (sb.length()> 0) && (rand.nextInt(10)%2 == 0 ) ){
+                sb.append(rand.nextInt(10));
+            } else {
+                sb.append((char) (rand.nextInt(22) + 97));
+            }
+        }
+        return sb.toString();
     }
 
 
