@@ -12,7 +12,7 @@ test{
     maxParallelForks = 10
 }
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'org.seleniumhq.selenium:selenium-java:3.5.3'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.seleniumhq.selenium:selenium-java:3.6.0'
     //compile 'ru.stqa.selenium:webdriver-factory:4.2'
 }

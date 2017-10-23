@@ -28,7 +28,7 @@ public class TestBase {
 
         driver = new ChromeDriver();
         tlDriver.set(driver);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
         System.out.println(  ((HasCapabilities)driver).getCapabilities()  );
         Runtime.getRuntime().addShutdownHook(

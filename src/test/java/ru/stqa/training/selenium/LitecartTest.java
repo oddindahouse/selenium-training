@@ -10,7 +10,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 public class LitecartTest extends TestBase {
 
     @Before
-    public void loginTest(){
+    public void login(){
         driver.navigate().to("http://localhost/litecart/admin");
         driver.findElement(By.cssSelector("input[name=username]")).sendKeys("admin");
         driver.findElement(By.cssSelector("input[name=password]")).sendKeys("admin");
