@@ -22,7 +22,8 @@ public class LiteCartBuyTest extends TestBase {
         for (int i = 0; i < newCount; i++) {
             Double oldValue = app.getSummaryPrice();
             app.deleteItemFromCart();
-            assertFalse(app.getSummaryPrice() == oldValue);
+
+            assertFalse(app.getSummaryPrice().equals(oldValue));
         }
 
         assertFalse(app.isSummaryTablePresent());
