@@ -19,13 +19,14 @@ public class LiteCartBuyTest extends TestBase {
         assertTrue(newCount == oldCount + 3 );
 
         //deleting all items
-        for (int i = 0; i < newCount; i++) {
-            Double oldValue = app.getSummaryPrice();
+       while(app.getItemCountInSummaryTable()>0){
+
+           Integer oldValue = app.getItemCountInSummaryTable();
             app.deleteItemFromCart();
-            assertFalse(app.getSummaryPrice().equals(oldValue));
+            Integer newValue = app.getItemCountInSummaryTable();
+            assertFalse(newValue.equals(oldValue));
+
         }
-        //check for summery table
-        assertFalse(app.isSummaryTablePresent());
 
 
 

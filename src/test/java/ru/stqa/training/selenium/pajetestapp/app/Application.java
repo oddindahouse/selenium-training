@@ -25,9 +25,10 @@ public class Application {
     public void quit() {
         driver.quit();
     }
-    public boolean isSummaryTablePresent(){
+
+    public Integer getItemCountInSummaryTable(){
         cartPage.open();
-        return cartPage.isSummaryTablePresent();
+        return cartPage.getItemCountOnCartPage();
     }
 
     public Double getSummaryPrice(){
