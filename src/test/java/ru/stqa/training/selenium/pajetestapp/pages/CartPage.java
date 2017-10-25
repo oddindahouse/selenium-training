@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.stalenessOf;
@@ -38,6 +37,7 @@ public class CartPage extends Page {
 
 
     public void deleteItem(){
+        //creating list of item elements
         List<WebElement> liList = driver.findElements(By.cssSelector("div#checkout-cart-wrapper li.item"));
         //fixing at same place
         if (liList.size()>1) {

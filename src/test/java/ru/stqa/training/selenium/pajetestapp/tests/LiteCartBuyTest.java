@@ -22,10 +22,9 @@ public class LiteCartBuyTest extends TestBase {
         for (int i = 0; i < newCount; i++) {
             Double oldValue = app.getSummaryPrice();
             app.deleteItemFromCart();
-
             assertFalse(app.getSummaryPrice().equals(oldValue));
         }
-
+        //check for summery table
         assertFalse(app.isSummaryTablePresent());
 
 
