@@ -14,11 +14,11 @@ public class L7_CartTest extends TestBase {
         //add 3 items to cart
         for (int i = 0; i < 3 ; i++) {
             driver.get("http://localhost/litecart/");
-            driver.get(driver.findElement(By.cssSelector("div.content li.product a.link")).getAttribute("href"));
+            driver.findElement(By.cssSelector("div.content li.product a.link")).click();
             String oldQuantity = driver.findElement(By.cssSelector("div#cart a.content span.quantity")).getText();
             //case : REQUIRED FIELDS found
             for (WebElement element : (driver.findElements(By.cssSelector("div.buy_now [required]")))) {
-                checkUpRequired(element);
+                checkUpRequiredFieldsForElement(element);
             }
             //click add button
             driver.findElement(By.cssSelector("button[name='add_cart_product']")).click();
@@ -31,8 +31,8 @@ public class L7_CartTest extends TestBase {
         //going to Cart page
         driver.findElement(By.cssSelector("div#cart a")).click();
         //find all li elements with class "item"
-        List<WebElement> liList = (List<WebElement>) ((JavascriptExecutor)driver)
-                .executeScript("return document.querySelectorAll('div#checkout-cart-wrapper li.item')");
+        List<WebElement> liList = driver.findElements(By.cssSelector("div#checkout-cart-wrapper li.item"));
+
         //find first remove button and click it . repeat until all items gone
         for (int i = 0; i < liList.size(); i++) {
             WebElement table = driver.findElement(By.cssSelector("table.dataTable"));
@@ -46,7 +46,7 @@ public class L7_CartTest extends TestBase {
         }
     }
 
-    private void checkUpRequired(WebElement element){
+    private void checkUpRequiredFieldsForElement(WebElement element){
         if ( "input".equals(element.getTagName()) ) {
             if ( "checkbox".equals(element.getAttribute("type")) ){
                 element.click();

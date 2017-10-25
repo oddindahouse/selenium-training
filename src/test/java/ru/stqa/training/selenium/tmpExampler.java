@@ -17,6 +17,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 public class tmpExampler {
 
@@ -27,7 +29,9 @@ public class tmpExampler {
     public void main() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-fullscreen");
-
+        //javaScript using.
+        //List<WebElement> liList = (List<WebElement>) ((JavascriptExecutor)driver)
+        //      .executeScript("return document.querySelectorAll('div#checkout-cart-wrapper li.item')");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("unexpectedAlertBehaviour", "dismiss");
         caps.setCapability(ChromeOptions.CAPABILITY,options);
@@ -68,9 +72,10 @@ public class tmpExampler {
     @Test
     public void testIE(){
 
-        WebDriver driver = new InternetExplorerDriver();
+        WebDriver driver = new FirefoxDriver();
         wait = new WebDriverWait(driver, 10);
-        driver.navigate().to("http://google.com");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.navigate().to("http://www.google.com");
         driver.findElement(By.name("q")).sendKeys("webdriver", Keys.ENTER);
         wait.until(titleIs("webdriver - Поиск в Google"));
         driver.quit();
